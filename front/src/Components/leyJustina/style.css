@@ -1,0 +1,22 @@
+.shape-image {
+  width: 300px; /* Ajusta el tamaño según tus necesidades */
+  height: auto;
+  float: right;
+  shape-outside: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  -webkit-shape-outside: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+  transform: rotate(5deg);
+}
+
+@media (max-width: 768px) {
+  .shape-image {
+    width: 100%;
+    float: none;
+    shape-outside: none;
+    -webkit-shape-outside: none;
+    margin-left: 0;
+    margin-bottom: 1rem;
+    transform: none;
+  }
+}
