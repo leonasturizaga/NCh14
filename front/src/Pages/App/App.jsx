@@ -4,10 +4,14 @@ import DoctorRegistry from "../DoctorRegistry";
 import LogIn from "../LogIn";
 import "./App.css";
 import PatientProfile from "../PatientProfile/Index";
-
+import ProtetedRoute from "../../Components/protectedRoute.jsx";
 import EmailResetPassword from '../resetPassword';
 import LandingPage from "../landing";
 import  Home  from "../home";
+import AuthRoute from "../../Components/authRoute/index.jsx";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 
 
@@ -15,11 +19,11 @@ import  Home  from "../home";
 const AppRoutes = () => {
   let routes = useRoutes([
     { path: '/registro', element: <DoctorRegistry /> },
-    { path: '/login', element: <LogIn /> },
+    { path: '/login', element: (<AuthRoute><LogIn /></AuthRoute>)},
     { path: '/patientProfile', element: <PatientProfile/>},
     {path: '/resetPassword', element: <EmailResetPassword />},
     {path: '/', element: <LandingPage />},
-    {path:'/home', element: <Home />}
+    {path:'/home', element: <ProtetedRoute element={<Home />} />}
     
   ])
 
@@ -31,7 +35,9 @@ function App() {
     <div className="bg-custom-bg bg-cover bg-center">
       <BrowserRouter>
         <AppRoutes />
+        <ToastContainer/ >
       </BrowserRouter>
+
     </div>
   );
 }
